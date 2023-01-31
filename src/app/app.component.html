@@ -1,0 +1,135 @@
+<div class="container-fluid container-md">
+  <!-- xs NAV BAR -->
+  <nav class="bg-light xs-nav fixed-bottom d-sm-none">
+    <div class="container-fluid">
+      <div class="row h-50">
+        <div class="col-3">
+          <span><i class="fa-solid fa-house fs-3 py-3"></i></span>
+        </div>
+        <div class="col-3">
+          <span><i class="fa-solid fa-magnifying-glass fs-2 py-3"></i></span>
+        </div>
+        <div class="col-3">
+          <span><i class="fa-solid fa-bell fs-2 py-3"></i></span>
+        </div>
+        <div class="col-3">
+          <span><i class="fa-solid fa-envelope fs-2 py-3"></i></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="row">
+    <!-- MAIN SECTION -->
+    <div class="col-12 col-sm-10 col-md-9 col-lg-6 main_bar">
+      <div class="row d-flex justify-content-between align-items-center ps-1">
+        <div class="col-12 pt-2">
+          <div><span class="fs-4 pt-3 fw-bold">Página Inicial</span></div>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col pt-2">
+          <div class="row">
+            <div class="col-2">
+              <img
+                class="rounded-circle"
+                src="../assets/logo-twitter-png-5860.png"
+                alt=""
+                height="50px"
+              />
+            </div>
+            <div class="col-9 col-sm-10">
+              <input
+                class="border-0 bg form-control"
+                type="text"
+                placeholder="O que está acontecendo?"
+                maxlength="130"
+                [(ngModel)]="tweetText"
+              />
+              <p>{{ 130 - tweetText.length + "/130" }}</p>
+              <div class="ps-3 d-flex text-info">
+                <p>
+                  <span><i class="fa-solid fa-earth-americas"></i></span>
+                </p>
+                <p class="fw-bold ps-1">Qualquer pessoa pode responder</p>
+                <hr />
+              </div>
+              <div class="row pb-2 justify-content-center">
+                <div class="col-9 text-info">
+                  <span class="ps-3"><i class="fa-solid fa-image"></i></span>
+                  <span class="ps-3"><i class="fa-solid fa-gift"></i></span>
+                  <span class="ps-3"
+                    ><i class="fa-solid fa-face-grin"></i
+                  ></span>
+                  <span class="ps-3"
+                    ><i class="fa-solid fa-location-pin"></i
+                  ></span>
+                </div>
+                <div class="col-3 col-sm-2">
+                  <button
+                    class="text-decoration-none fs-6 fw-bold text-white bg-info py-1 px-3 rounded-pill"
+                    (click)="tweetar()"
+                  >
+                    Tweetar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- TWEET -->
+          <div *ngIf="hasTweets">
+            <div *ngFor="let tweet of tweets" class="row mt-1 border d-flex">
+              <div class="col-3 mt-2">
+                <img
+                  class="rounded-circle"
+                  src="../assets/logo-twitter-png-5860.png"
+                  alt=""
+                  height="50px"
+                />
+              </div>
+              <div class="col-9">
+                <div
+                  class="row d-flex justify-content-between align-items-center ps-1"
+                >
+                  <div class="col-10 pt-2">
+                    <div>
+                      <p>
+                        <span class="fw-bold">User Name </span>@username .
+                        <span>{{date | date}}</span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-1 me-2 ps-0">
+                    <div>
+                      <span
+                        ><i class="fa-solid fa-ellipsis fs-5 py-3"></i
+                      ></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  {{ tweet }}
+                  <div class="row pt-3">
+                    <div class="col">
+                      <span
+                        ><i class="fa-solid fa-comment"></i>
+                        <button (click)="exclude()" class="buttonTrash">
+                          <img
+                            class="trash"
+                            src="../assets/lixeira.png"
+                            alt="buttonpng"
+                            border="0"
+                          /></button
+                      ></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
